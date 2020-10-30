@@ -507,6 +507,13 @@
             this.gramaticaToolStripMenuItem.Text = "Gramatica";
             this.gramaticaToolStripMenuItem.Click += new System.EventHandler(this.gramaticaToolStripMenuItem_Click);
             // 
+            // tokensToolStripMenu
+            // 
+            this.tokensToolStripMenu.Name = "tokensToolStripMenu";
+            this.tokensToolStripMenu.Size = new System.Drawing.Size(180, 22);
+            this.tokensToolStripMenu.Text = "Tokens";
+            this.tokensToolStripMenu.Click += new System.EventHandler(this.tokensToolStripMenu_Click);
+            // 
             // depurarToolStripMenuItem
             // 
             this.depurarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {

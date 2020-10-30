@@ -1234,6 +1234,12 @@ namespace at.jku.ssw.cc //Compilador //text_Box_Mio
             compilar();
         }
 
+       private void tokensToolStripMenu_Click(object sender, EventArgs e)
+        {
+            tabControl3.SelectedIndex = 3;
+            inicializa();
+            compilar();
+        }
         private void maquVirtualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl1.Width -= 100;
