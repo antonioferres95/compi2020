@@ -495,6 +495,7 @@ namespace at.jku.ssw.cc
             padre.ExpandAll();
             MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(12);
+            MessageBoxCon3Preg();
             //-------------------------------------------------Grupo 2 28/9/2015----------------------------------------------------------------------- 
             Type(out type);  //En VardDecl
             //int[] en el caso del "int[] pos",... int, Table, Persona, int[], etc  
@@ -508,8 +509,8 @@ namespace at.jku.ssw.cc
             Code.seleccLaProdEnLaGram(12);
             //-------------------------------------------------Grupo 2 28/9/2015----------------------------------------------------------------------- 
             System.Windows.Forms.TreeNode lbrakopc = new System.Windows.Forms.TreeNode("LbrakeOpc");
-            MessageBoxCon3Preg();
             hijo1.Nodes.Add(lbrakopc);
+            MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(13);
             MessageBoxCon3Preg();
             Code.Colorear("latoken");
@@ -523,6 +524,7 @@ namespace at.jku.ssw.cc
             //-------------------------------------------------Grupo 2 28/9/2015----------------------------------------------------------------------- 
             Check(Token.IDENT); // "pos", en int pos,   .....int,....  x, i, etc
             Code.seleccLaProdEnLaGram(6);
+            MessageBoxCon3Preg();
             padre.Nodes.Add("ident");// Hace referencia a la x
             MessageBoxCon3Preg();
             Code.Colorear("token"); 
@@ -539,12 +541,15 @@ namespace at.jku.ssw.cc
             Code.CreateMetadata(vble); //Para el campo pos (en int[] pos)Global, Field o .....  
             //o Para la vbe Global val
             //o para x en int x;
+            MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(7);
+            MessageBoxCon3Preg();
+            Code.Colorear("latoken");
             Identifieropc(hijo2, type, kind);
-            Code.Colorear("latoken"); 
             Check(Token.SEMICOLON);
             MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(6);
+            MessageBoxCon3Preg();
             Code.Colorear("token");
             padre.Nodes.Add("';'");
             MessageBoxCon3Preg();
@@ -654,6 +659,7 @@ namespace at.jku.ssw.cc
                         ntype.ExpandAll();
                         MessageBoxCon3Preg();
                     }
+                MessageBoxCon3Preg();
                 methodDecl.Nodes.Add("ident");
                 MessageBoxCon3Preg();
                 Code.Colorear("token");
@@ -684,9 +690,11 @@ namespace at.jku.ssw.cc
                     //infiere que no hay params => 1) debe venir un ")". 2) La pocion de la produccion es "."
                     Code.Colorear("latoken");  //pinta el ")"
                     Check(Token.RPAR);
-                    Code.seleccLaProdEnLaGram(8);
                     pars.Nodes.Add(".");
                     pars.ExpandAll();
+                    MessageBoxCon3Preg();
+                    Code.seleccLaProdEnLaGram(8);
+                    MessageBoxCon3Preg();
                     methodDecl.Nodes.Add("')'");
                     MessageBoxCon3Preg();
                 }
@@ -713,6 +721,7 @@ namespace at.jku.ssw.cc
                             posDeclars.ExpandAll();
                             MessageBoxCon3Preg();
                             Code.seleccLaProdEnLaGram(2);
+                            MessageBoxCon3Preg();
                             System.Windows.Forms.TreeNode varDecl = new System.Windows.Forms.TreeNode("VarDecl");
                             declaration.Nodes.Add(varDecl);
                             declaration.ExpandAll();
@@ -728,7 +737,7 @@ namespace at.jku.ssw.cc
                     }
                     //Termina Vardecl.
                 Code.seleccLaProdEnLaGram(2);
-
+                MessageBoxCon3Preg();
                 if (cantVarLocales > 0)
                 {
                     string instrParaVarsLocs = ".locals init(int32 V_0";
@@ -745,9 +754,10 @@ namespace at.jku.ssw.cc
                 System.Windows.Forms.TreeNode posDeclarsAux = new System.Windows.Forms.TreeNode("PosDeclars");
                 posDeclarsAux.Nodes.Add(".");
                 posDeclarsAux.ExpandAll();
-                posDeclars.Nodes.Add(posDeclarsAux);
-                Code.Colorear("latoken");  //"{"
                 MessageBoxCon3Preg();
+                posDeclars.Nodes.Add(posDeclarsAux);
+                MessageBoxCon3Preg();
+                Code.Colorear("latoken");  //"{"
                 Code.seleccLaProdEnLaGram(8);
                 MessageBoxCon3Preg();
                 //Comienza Block
