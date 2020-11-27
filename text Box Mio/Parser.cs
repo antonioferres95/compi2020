@@ -338,18 +338,21 @@ namespace at.jku.ssw.cc
             {
                 MethodDecl(methodDeclsOpc);  //void Main() int x,i; {val = new Table;....}
             }
+            
 
-            Check(Token.RBRACE);
-            Code.Colorear("token");
             //////----------------------------------------------------------------Grupo 2 20/10/2015------------------------------------------------------
             Code.seleccLaProdEnLaGram(8);
             MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(3);
             MessageBoxCon3Preg();
-            //MessageBoxCon3Preg(program);
             Code.seleccLaProdEnLaGram(0);
             MessageBoxCon3Preg();
             program.Nodes.Add("}");
+            program.Nodes[program.Nodes.Count - 1].EnsureVisible();
+            MessageBoxCon3Preg();
+            Code.Colorear("latoken");
+            Check(Token.RBRACE);
+
             //////----------------------------------------------------------------Grupo 2 20/10/2015------------------------------------------------------
             if (ZZ.parser)
             {
@@ -933,10 +936,10 @@ namespace at.jku.ssw.cc
                             MessageBoxCon3Preg();
                             Code.seleccLaProdEnLaGram(22);
                             MessageBoxCon3Preg();
-                            Code.Colorear("latoken");
                             RestOfstatement.Nodes.Add("';'");
                             RestOfstatement.Nodes[RestOfstatement.Nodes.Count - 1].EnsureVisible();
                             MessageBoxCon3Preg();
+                            Code.Colorear("latoken");
                             Code.seleccLaProdEnLaGram(18);
                             MessageBoxCon3Preg();
 
@@ -1406,14 +1409,13 @@ namespace at.jku.ssw.cc
                 Code.seleccLaProdEnLaGram(17);
             }//Fin while
             MessageBoxCon3Preg();
-            Check(Token.RBRACE);
-            MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(16);
             MessageBoxCon3Preg();
-            Code.Colorear("token");
             block.Nodes.Add("'}'");
             MessageBoxCon3Preg(block);
             MessageBoxCon3Preg();
+            Code.Colorear("latoken");
+            Check(Token.RBRACE);
         }//Fin Block
 
         static void ActPars()
