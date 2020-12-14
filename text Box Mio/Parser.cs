@@ -350,8 +350,9 @@ namespace at.jku.ssw.cc
             program.Nodes.Add("}");
             program.Nodes[program.Nodes.Count - 1].EnsureVisible();
             MessageBoxCon3Preg();
-            Code.Colorear("latoken");
             Check(Token.RBRACE);
+            Code.Colorear("token");
+            
 
             //////----------------------------------------------------------------Grupo 2 20/10/2015------------------------------------------------------
             if (ZZ.parser)
@@ -930,18 +931,13 @@ namespace at.jku.ssw.cc
                                     + " = ....." + Token.names[token.kind] + " str=" + token.str);
                                 if (ZZ.readKey) Console.ReadKey();
                             };
-                            Code.seleccLaProdEnLaGram(25);
-                            MessageBoxCon3Preg();
-                            Code.seleccLaProdEnLaGram(23);
                             MessageBoxCon3Preg();
                             Code.seleccLaProdEnLaGram(22);
                             MessageBoxCon3Preg();
                             RestOfstatement.Nodes.Add("';'");
                             RestOfstatement.Nodes[RestOfstatement.Nodes.Count - 1].EnsureVisible();
                             MessageBoxCon3Preg();
-                            Code.Colorear("latoken");
-                            Code.seleccLaProdEnLaGram(18);
-                            MessageBoxCon3Preg();
+                            //Code.Colorear("latoken");
 
                             break;
                         }
@@ -1397,6 +1393,10 @@ namespace at.jku.ssw.cc
                     }
 
                     Statement(statement);  //dentro de block()
+                   // MessageBoxCon3Preg();
+                   // statementsopc.Nodes.Add(statementsopc);
+                    //statementsopc.Nodes[statementsopc.Nodes.Count - 1].EnsureVisible();
+
 
                 }//Fin if 
                 else
@@ -1406,16 +1406,21 @@ namespace at.jku.ssw.cc
                     Errors.Error("Espero una sentencia");
                 }
                 ii++;
-                Code.seleccLaProdEnLaGram(17);
+                //Code.seleccLaProdEnLaGram(17);
             }//Fin while
+            Code.Colorear("token");
+            Code.seleccLaProdEnLaGram(18);
+            MessageBoxCon3Preg();
+            Code.seleccLaProdEnLaGram(17);
             MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(16);
             MessageBoxCon3Preg();
             block.Nodes.Add("'}'");
             MessageBoxCon3Preg(block);
             MessageBoxCon3Preg();
-            Code.Colorear("latoken");
             Check(Token.RBRACE);
+            Code.Colorear("token");
+            
         }//Fin Block
 
         static void ActPars()
@@ -1629,6 +1634,7 @@ namespace at.jku.ssw.cc
                 padre.Nodes.Add(Term);
                 MessageBoxCon3Preg(padre);
                 Parser.Term(out item, Term);
+                Code.seleccLaProdEnLaGram(23);
             }
             string opString = "";
             MessageBoxCon3Preg();
@@ -1680,14 +1686,18 @@ namespace at.jku.ssw.cc
                 OpcAddopTerms.Nodes.Add(Term_OpcAddop);
                 OpcAddopTerms.Nodes[OpcAddopTerms.Nodes.Count - 1].EnsureVisible();
                 Parser.Term(out itemSig, Term_OpcAddop);
-               Code.Load(itemSig);
+                Code.seleccLaProdEnLaGram(25);
+                MessageBoxCon3Preg();
+                Code.seleccLaProdEnLaGram(23);
+                MessageBoxCon3Preg();
+                Code.Load(itemSig);
                 if (item.type != Tab.intType || itemSig.type != Tab.intType)
                     Errors.Error("Los operandos deben ser de tipo int");
                 nroDeInstrCorriente++;
                 Code.il.Emit(op);
                 MessageBoxCon3Preg();
                 Code.cargaInstr(opString);
-                Code.seleccLaProdEnLaGram(28);
+                //Code.seleccLaProdEnLaGram(28);
                 if (op == Code.ADD)
                     cil[nroDeInstrCorriente].accionInstr = AccionInstr.add;
                 else if (op == Code.SUB)
@@ -2063,6 +2073,11 @@ namespace at.jku.ssw.cc
                     MessageBoxCon3Preg();
                     Code.Colorear("latoken");
                     Parser.Factor(out itemSig, Factor_OpcMulop);
+                    Code.seleccLaProdEnLaGram(27);
+                    MessageBoxCon3Preg();
+                    Code.seleccLaProdEnLaGram(26);
+                    MessageBoxCon3Preg();
+
                     Code.Load(itemSig);
                     if (item.type != Tab.intType || itemSig.type != Tab.intType)
                     {
@@ -2086,8 +2101,7 @@ namespace at.jku.ssw.cc
                     Code.cargaProgDeLaGram("OpcMulopFactor = .");
                     MessageBoxCon3Preg();
                     Code.seleccLaProdEnLaGram(26);
-                    MessageBoxCon3Preg();
-                    Code.seleccLaProdEnLaGram(23);
+                    MessageBoxCon3Preg();  
                 }
             }
             else
@@ -2133,9 +2147,10 @@ namespace at.jku.ssw.cc
                 {
                     case Token.NUMBER:
                         {
+                            Code.Colorear("latoken");
                             Check(Token.NUMBER);
                             Code.cargaProgDeLaGram("Factor = number.");
-                            Code.Colorear("token");
+                            //Code.Colorear("token");
                             System.Windows.Forms.TreeNode number = new System.Windows.Forms.TreeNode("number.");
                             padre.Nodes.Add(number);
                             padre.ExpandAll();
@@ -2219,9 +2234,12 @@ namespace at.jku.ssw.cc
                             Code.seleccLaProdEnLaGram(23);
                             MessageBoxCon3Preg();
                             Parser.Expr(out item, Expr);
+                            Code.seleccLaProdEnLaGram(28);
                             MessageBoxCon3Preg();
                             Check(Token.RPAR);
                             padre.Nodes.Add("')'");
+                            padre.Nodes[padre.Nodes.Count - 1].EnsureVisible();
+                            MessageBoxCon3Preg();
                             MessageBoxCon3Preg(padre);
                             MessageBoxCon3Preg();
                             break;
