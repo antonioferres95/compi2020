@@ -345,15 +345,20 @@ namespace at.jku.ssw.cc
             MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(3);
             MessageBoxCon3Preg();
+            System.Windows.Forms.TreeNode methodDeclsOpc2 = new System.Windows.Forms.TreeNode("MethodDeclsOpc");
+            methodDeclsOpc.Nodes.Add(methodDeclsOpc2);
+            methodDeclsOpc.Nodes[methodDeclsOpc.Nodes.Count - 1].EnsureVisible();
+            MessageBoxCon3Preg();
+            Code.Colorear("latoken");
+            methodDeclsOpc2.Nodes.Add(".");
+            methodDeclsOpc2.Nodes[methodDeclsOpc2.Nodes.Count - 1].EnsureVisible();
+            MessageBoxCon3Preg();
             Code.seleccLaProdEnLaGram(0);
             MessageBoxCon3Preg();
             program.Nodes.Add("}");
             program.Nodes[program.Nodes.Count - 1].EnsureVisible();
             MessageBoxCon3Preg();
             Check(Token.RBRACE);
-            Code.Colorear("token");
-            
-
             //////----------------------------------------------------------------Grupo 2 20/10/2015------------------------------------------------------
             if (ZZ.parser)
             {
@@ -937,8 +942,7 @@ namespace at.jku.ssw.cc
                             RestOfstatement.Nodes.Add("';'");
                             RestOfstatement.Nodes[RestOfstatement.Nodes.Count - 1].EnsureVisible();
                             MessageBoxCon3Preg();
-                            //Code.Colorear("latoken");
-
+                            Code.Colorear("token");
                             break;
                         }
                     case Token.LPAR:   //Designator(....  metodo(.....
@@ -1393,11 +1397,26 @@ namespace at.jku.ssw.cc
                     }
 
                     Statement(statement);  //dentro de block()
-                   // MessageBoxCon3Preg();
-                   // statementsopc.Nodes.Add(statementsopc);
-                    //statementsopc.Nodes[statementsopc.Nodes.Count - 1].EnsureVisible();
-
-
+                    Code.Colorear("token");
+                    Code.seleccLaProdEnLaGram(18);
+                    MessageBoxCon3Preg();
+                    Code.seleccLaProdEnLaGram(17);
+                    MessageBoxCon3Preg();
+                    System.Windows.Forms.TreeNode statementsopc2 = new System.Windows.Forms.TreeNode("StatementsOpc");
+                    statementsopc.Nodes.Add(statementsopc2);
+                    statementsopc.Nodes[statementsopc.Nodes.Count - 1].EnsureVisible();
+                    MessageBoxCon3Preg();
+                    Code.Colorear("latoken");
+                    statementsopc2.Nodes.Add(".");
+                    statementsopc2.ExpandAll();
+                    MessageBoxCon3Preg(statementsopc2);
+                    MessageBoxCon3Preg();
+                    Code.seleccLaProdEnLaGram(16);
+                    MessageBoxCon3Preg();
+                    block.Nodes.Add("'}'");
+                    MessageBoxCon3Preg(block);
+                    MessageBoxCon3Preg();
+                    Check(Token.RBRACE);
                 }//Fin if 
                 else
                 {
@@ -1408,19 +1427,6 @@ namespace at.jku.ssw.cc
                 ii++;
                 //Code.seleccLaProdEnLaGram(17);
             }//Fin while
-            Code.Colorear("token");
-            Code.seleccLaProdEnLaGram(18);
-            MessageBoxCon3Preg();
-            Code.seleccLaProdEnLaGram(17);
-            MessageBoxCon3Preg();
-            Code.seleccLaProdEnLaGram(16);
-            MessageBoxCon3Preg();
-            block.Nodes.Add("'}'");
-            MessageBoxCon3Preg(block);
-            MessageBoxCon3Preg();
-            Check(Token.RBRACE);
-            Code.Colorear("token");
-            
         }//Fin Block
 
         static void ActPars()
